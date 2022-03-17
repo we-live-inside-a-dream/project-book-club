@@ -5,9 +5,9 @@ const eventRoutes = require('./routes/eventRoutes')
 
 
 const app = express()
-const port = 5000
+const port = 5001
 
-app.use('/api/eventRoutes', eventRoutes)
+app.use('/api/events', eventRoutes)
 
 // app.get('/', function (req, res) {
 //   res.send('Hello World')
