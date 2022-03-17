@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+const mongoose = require('./mongooseDb');
 
 const Student = mongoose.model('Student', {
     "name": String,
@@ -9,11 +9,10 @@ const Student = mongoose.model('Student', {
 })
 
 
-async function createStudent(StudentData) {
-    let newStudent = new Student(StudentData)
-    let createdStudent = await newStudent.save()
+async function createStudent(studentData) {
+    let createdStudent = await Student.create(studentData)
     console.log("saving student info", createdStudent)
-    return createdStudent._id;
+    return createdStudent.id;
 }
 
 module.exports = {
