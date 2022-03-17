@@ -1,11 +1,11 @@
-const { model } = require('mongoose');
+
 const mongoose = require('mongoose');
 
-const Student = mongoose.model('Students', {
-    name: String,
-    start: String,
-    end: String,
-    date: String,
+const Student = mongoose.model('Student', {
+    "name": String,
+    "start": String,
+    "end": String,
+    "date": String,
 })
 
 
