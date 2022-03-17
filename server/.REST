@@ -1,0 +1,9 @@
+POST http://localhost:5001/api/events/createEvent
+Content-Type: application/json
+
+{
+    "firstName":"Reza",
+    "lastName": "Naeim",
+    "title": "Session"
+}
+###
