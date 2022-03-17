@@ -3,35 +3,35 @@ const mongoose = require('mongoose');
 const Event = mongoose.model("events", {
     title: {
         type: "string",
-        //required: true
+        required: true
     },
-    // userProfileId: {
-    //     type: "string",
-    //     required: true
-    // },
+    userProfileId: {
+        type: "string",
+        required: true
+    },
     firstName: {
         type: "string",
-        //required: true
+        required: true
     },
     lastName: {
         type: "string",
-        //required: true
+        required: true
     },
     type: {
         type: [String],
-        //requited: true
+        requited: true
     },
     recurring: {
         type: Boolean,
     },
-    // startDate: {
-    //     type: String,
-    //     required: true
-    // },
-    // endDate: {
-    //     type: String,
-    //     required: true
-    // },
+    startDate: {
+        type: String,
+        required: true
+    },
+    endDate: {
+        type: String,
+        required: true
+    },
     startTime: {
         type: String,
 
