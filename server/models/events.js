@@ -47,6 +47,7 @@ const Event = mongoose.model("Events", {
     }
 })
 
+//only creates if there are no required field! or else throws validation error!
 async function createEvent(eventData) {
     let newEvent = new Event(eventData)
     console.log("this is new event from the model", newEvent)
