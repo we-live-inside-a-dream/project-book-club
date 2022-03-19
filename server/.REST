@@ -1,2 +1,5 @@
 GET http://localhost:5001/api/events/createEvent
 ###
+
+GET http://localhost:5001/api/members/members/list
+###
