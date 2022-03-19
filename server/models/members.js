@@ -2,10 +2,8 @@
 const mongoose = require('./mongooseDb');
 
 const Members = mongoose.model('Members', {
-    "name": String,
-    "start": String,
-    "end": String,
-    "date": String,
+    "firstName": String,
+    "lastName": String
 })
 
 
