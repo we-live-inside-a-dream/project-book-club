@@ -31,13 +31,13 @@ content-type: application/json
 }
 ###
 
-GET http://localhost:5001/api/members/623577d2e81f2a9930c909d8
+GET http://localhost:5001/api/events/delete/62360c22d1ed0623ba57d634
 ###
 
-POST http://localhost:5001/api/members/update/?=623577d1e81f2a9930c909d3
+POST http://localhost:5001/api/members/update/623616a18755780ba047f12d
 
 {
     "firstName": "Farhad",
-    "lastName": "Khan"
+    "lastName": "Big"
 }
 ###
