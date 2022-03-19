@@ -13,7 +13,22 @@ async function createMember(MemberData) {
     return createdMember.id;
 }
 
+async function listMembers() {
+    return Members.find({})
+}
+
+async function findById(id) {
+    return Members.findById(id)
+}
+
+async function update(id, newMember) {
+    return Members.findByIdAndUpdate(id, newMember)
+}
+
 module.exports = {
-    createMember
+    createMember,
+    listMembers,
+    findById,
+    update
 }
 
