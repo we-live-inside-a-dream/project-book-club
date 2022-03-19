@@ -1,7 +1,7 @@
 const express = require('express')
 
 const eventRoutes = require('./routes/eventRoutes')
-const membersRoutes = require('./routes/memberRoutes')
+const membersRoutes = require('./routes/membersRoutes')
 
 
 
