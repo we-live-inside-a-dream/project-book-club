@@ -1,10 +1,10 @@
-POST http://localhost:5001/api/events/createEvent
+POST http://localhost:5001/api/events/createEvent HTTP/1.1
 Content-type: application/json
 
 {
     "title": "I am session",
     "userProfileId": "623577d1e81f2a9930c909d3",
-    "firstName:": "Rezza",
+    "firstName": "The Great Reza",
     "lastName": "Naeim",
     "type": ["personal"],
     "recurring": true,
@@ -13,7 +13,7 @@ Content-type: application/json
     "startTime": "20:30",
     "endTime": "21:00",
     "note": "this is a new session",
-    "visibility": "true"
+    "visibility": true
 }
 ###
 
