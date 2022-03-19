@@ -13,7 +13,7 @@ router.post('/createEvent', async (req, res) => {
     console.log("from API event route eventId", createdEventId)
 })
 
-
+//not working
 router.post('/updateEvent:id', async (req, res) => {
     let id = req.params.id
     let updatedEvent = req.body

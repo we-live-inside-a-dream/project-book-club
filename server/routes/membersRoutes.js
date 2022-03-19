@@ -22,6 +22,7 @@ router.get('/:id', async(req, res) => {
     res.send(member)
 })
 
+//not working :(
 router.get('/update/:id', async (req, res) => {
     let id = req.params.id
     let updatedMember = req.body
