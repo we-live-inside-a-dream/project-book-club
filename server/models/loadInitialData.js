@@ -4,11 +4,11 @@ let membersListModel = require("./members");
 
 const loadInitialData = async () => {
   for (let member of membersList) {
-    console.log("added student to list", member.name);
+    console.log("added student to list", member.firstName);
     let createdId = await membersListModel.createMember(member);
     console.log(
       "members first name ",
-      member.name,
+      member.firstName,
       "created with id",
       createdId
     );
