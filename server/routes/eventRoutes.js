@@ -6,7 +6,9 @@ const eventModel = require('../models/events')
 
 router.post('/createEvent', async (req, res) => {
     let newEvent = req.body
+    console.log("this is the body ", newEvent)
     let createdEventId = await eventModel.createEvent(newEvent)
+    console.log('this is the created event id', createdEventId)
     res.send(createdEventId)
     console.log("from API event route eventId", createdEventId)
 })
