@@ -2,35 +2,35 @@ const mongoose = require('mongoose');
 
 const Event = mongoose.model("Events", {
     title: {
-        type: "string",
-        required: true
+        type: String,
+        //required: true
     },
     userProfileId: {
-        type: "string",
-        required: true
+        type: String,
+        //required: true
     },
     firstName: {
-        type: "string",
-        required: true
+        type: String,
+        //required: true
     },
     lastName: {
-        type: "string",
-        required: true
+        type: String,
+        //required: true
     },
     type: {
         type: [String],
-        requited: true
+        //requited: true
     },
     recurring: {
         type: Boolean,
     },
     startDate: {
         type: String,
-        required: true
+        //required: true
     },
     endDate: {
         type: String,
-        required: true
+        //required: true
     },
     startTime: {
         type: String,
@@ -49,11 +49,26 @@ const Event = mongoose.model("Events", {
 
 async function createEvent(eventData) {
     let newEvent = new Event(eventData)
+    console.log("this is new event from the model", newEvent)
     let createdEvent = await newEvent.save()
     console.log("saving event info", createdEvent)
     return createdEvent._id;
 }
 
+async function updateEvent(id, updatedEvent) {
+    console.log("FROM THE MODEL", id, updatedEvent);
+    await Event.findByIdAndUpdate(id, updatedEvent, {
+      returnDocument: "after",
+    });
+    // return theUpdatedEvent;
+  }
+
+async function deleteEvent(id) {
+    await Event.findByIdAndDelete(id)
+}
+
 module.exports = {
-    createEvent
+    createEvent,
+    updateEvent,
+    deleteEvent
 }
