@@ -1,5 +1,26 @@
-GET http://localhost:5001/api/events/createEvent
+POST http://localhost:5001/api/events/createEvent
+Content-type: application/json
+
+{
+    "title": "I am session",
+    "userProfileId": "623577d1e81f2a9930c909d3",
+    "firstName:": "Rezza",
+    "lastName": "Naeim",
+    "type": ["personal"],
+    "recurring": true,
+    "startDate": "21-03-2022",
+    "endDate": "21-03-2022",
+    "startTime": "20:30",
+    "endTime": "21:00",
+    "note": "this is a new session",
+    "visibility": "true"
+}
 ###
+
+POST http://localhost:5001/api/events/deleteEvent/6235fb6148ee39cb3dfcc063
+###
+
+
 
 POST http://localhost:5001/api/members/create
 content-type: application/json
