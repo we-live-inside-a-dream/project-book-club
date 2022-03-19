@@ -1,14 +1,14 @@
 
-let studentsList = require("./studentsList.json");
-let studentsListModel = require("./student");
+let membersList = require("./membersList.json");
+let membersListModel = require("./members");
 
 const loadInitialData = async () => {
-  for (let student of studentsList) {
-    console.log("added student to list", student.name);
-    let createdId = await studentsListModel.createStudent(student);
+  for (let member of membersList) {
+    console.log("added student to list", member.name);
+    let createdId = await membersListModel.createMember(member);
     console.log(
-      "student first name ",
-      student.name,
+      "members first name ",
+      member.name,
       "created with id",
       createdId
     );
