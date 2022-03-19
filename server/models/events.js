@@ -1,36 +1,36 @@
 const mongoose = require('mongoose');
 
-const Event = mongoose.model("Events", {
+const Event = mongoose.model("Event", {
     title: {
         type: String,
-        //required: true
+        required: true
     },
     userProfileId: {
         type: String,
-        //required: true
+        required: true
     },
     firstName: {
         type: String,
-        //required: true
+        required: true
     },
     lastName: {
         type: String,
-        //required: true
+        required: true
     },
     type: {
         type: [String],
-        //requited: true
+        requited: true
     },
     recurring: {
         type: Boolean,
     },
     startDate: {
         type: String,
-        //required: true
+        required: true
     },
     endDate: {
         type: String,
-        //required: true
+        required: true
     },
     startTime: {
         type: String,
