@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 //const eventModel = require('../models/events')
-const studentsList = require('../models/studentsList.json')
+const studentsList = require('../models/membersList.json')
 
 // router.get('/createEvent', async (req, res) => {
 //     let newEvent = req.body
@@ -10,7 +10,7 @@ const studentsList = require('../models/studentsList.json')
 //     console.log("from API event route eventId", createdEventId)
 // })
 router.get('/createEvent', async (req, res) => {
-    res.send(studentsList)
+    res.send(membersList)
 
 })
 
