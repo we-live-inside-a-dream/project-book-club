@@ -1,5 +1,22 @@
 GET http://localhost:5001/api/events/createEvent
 ###
 
-GET http://localhost:5001/api/members/members/list
+POST http://localhost:5001/api/members/create
+content-type: application/json
+
+{
+    "firstName": "Farhad",
+    "lastName": "Khan"
+}
+###
+
+GET http://localhost:5001/api/members/623577d2e81f2a9930c909d8
+###
+
+POST http://localhost:5001/api/members/update/?=623577d1e81f2a9930c909d3
+
+{
+    "firstName": "Farhad",
+    "lastName": "Khan"
+}
 ###
