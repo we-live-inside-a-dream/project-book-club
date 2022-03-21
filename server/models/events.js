@@ -65,6 +65,7 @@ async function updateEvent(id, updatedEvent) {
   }
 
 async function deleteEvent(id) {
+    console.log("this is the delete event function with the id", id)
     await Event.findByIdAndDelete(id)
 }
 
