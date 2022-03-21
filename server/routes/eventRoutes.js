@@ -14,7 +14,7 @@ router.post('/createEvent', async (req, res) => {
 })
 
 //not working
-router.post('/updateEvent:id', async (req, res) => {
+router.post('/updateEvent/:id', async (req, res) => {
     let id = req.params.id
     let updatedEvent = req.body
     let newUpdatedEvent = await eventModel.updateEvent(id, updatedEvent)
