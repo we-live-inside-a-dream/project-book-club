@@ -29,7 +29,7 @@ async function findById(id) {
     return Members.findById(id)
 }
 
-async function update(id, updatedMember) {
+async function updateMember(id, updatedMember) {
     console.log("From the model/update", id, updatedMember)
     await Members.findByIdAndUpdate(id, updatedMember, {
         returnDocument: "after"
@@ -41,6 +41,6 @@ module.exports = {
     createMember,
     listMembers,
     findById,
-    update
+    updateMember
 }
 

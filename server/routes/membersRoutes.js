@@ -23,11 +23,12 @@ router.get('/:id', async(req, res) => {
 })
 
 //not working :(
-router.get('/update/:id', async (req, res) => {
+router.post('/update/:id', async (req, res) => {
     let id = req.params.id
     let updatedMember = req.body
     console.log("updating members", id, "with", updatedMember)
     let newUpdatedMember = await membersListModel.updateMember(id, updatedMember)
+    console.log("this is newUpdatedMember from routes", newUpdatedMember)
     res.send(newUpdatedMember)
 })
 
