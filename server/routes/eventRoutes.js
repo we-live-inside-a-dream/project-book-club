@@ -23,7 +23,7 @@ router.post('/updateEvent:id', async (req, res) => {
 
 
 //this route doesn't delete
-router.delete('/deleteEvent:id', async (req, res) => {
+router.delete('/deleteEvent/:id', async (req, res) => {
     let id = req.params.id
     let deleteEvent = await eventModel.deleteEvent(id)
     res.send(deleteEvent)
