@@ -14,7 +14,7 @@ router.post('/createEvent', async (req, res) => {
     console.log("from API event route eventId", createdEventId)
 })
 
-//not working
+
 router.post('/updateEvent/:id', async (req, res) => {
     let id = req.params.id
     let updatedEvent = req.body
@@ -25,7 +25,6 @@ router.post('/updateEvent/:id', async (req, res) => {
 })
 
 
-//this route doesn't delete
 router.delete('/deleteEvent/:id', async (req, res) => {
     let id = req.params.id
     let deletedEvent = await eventModel.deleteEvent(id)
