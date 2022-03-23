@@ -35,9 +35,29 @@ delete http://localhost:5001/api/events/deleteEvent/62360c22d1ed0623ba57d634
 ###
 
 POST http://localhost:5001/api/members/update/623616a18755780ba047f12d
+Content-type: application/json
 
 {
     "firstName": "Farhad",
     "lastName": "Big"
+}
+###
+
+POST http://localhost:5001/api/events/updateEvent/6238c6da7d7c50536741a7c3
+Content-type: application/json
+
+{
+    "title": "I am session222222",
+    "userProfileId": "623577d1e81f2a9930c909d3",
+    "firstName": "The Great Rezzzzzzzzzza",
+    "lastName": "Naeim",
+    "type": ["personal"],
+    "recurring": true,
+    "startDate": "21-03-2022",
+    "endDate": "21-03-2022",
+    "startTime": "20:30",
+    "endTime": "21:00",
+    "note": "this is a new session",
+    "visibility": true
 }
 ###
