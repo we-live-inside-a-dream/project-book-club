@@ -42,8 +42,11 @@ const createEventForm = () => {
     return(
         <form>
             <label>First Name</label>
+            <input></input>
         </form>
     )
+
+    
 }
 
 
