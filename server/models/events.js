@@ -56,6 +56,11 @@ async function createEvent(eventData) {
     return createdEvent._id;
 }
 
+async function getEvents() {
+    let events = await Event.find()
+    return events
+}
+
 async function updateEvent(id, updatedEvent) {
     console.log("FROM THE MODEL", id, updatedEvent);
     await Event.findByIdAndUpdate(id, updatedEvent, {
@@ -72,5 +77,6 @@ async function deleteEvent(id) {
 module.exports = {
     createEvent,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    getEvents
 }

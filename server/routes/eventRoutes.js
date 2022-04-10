@@ -14,6 +14,11 @@ router.post('/createEvent', async (req, res) => {
     console.log("from API event route eventId", createdEventId)
 })
 
+router.get('/events', async (req, res) => {
+    let events = await eventModel.getEvents()
+    res.send(events)
+})
+
 
 router.post('/updateEvent/:id', async (req, res) => {
     let id = req.params.id
