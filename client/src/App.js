@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {BasicComponent} from './components/NewComponent';
 function App() {
   return (
     <div>
-      <p>This will be an awesome app ;)</p>
+      <BasicComponent name='The work' color='green'/>
     </div>
   );
 }
