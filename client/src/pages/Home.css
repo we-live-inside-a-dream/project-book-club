@@ -1,0 +1,9 @@
+.header{
+    background-color: brown;
+    box-shadow: 8px 15px 29px 5px rgba(0,0,0,0.40);
+    padding:20px;
+}
+
+.welcome{
+    color:white;
+}
