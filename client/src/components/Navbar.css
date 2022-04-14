@@ -1,0 +1,21 @@
+.navbar-title{
+    color:white;
+    margin:0px;
+    text-decoration: none;
+}
+
+.navbar-item{
+    margin: 20px;
+    background-color:rgb(96, 46, 46);
+    padding: 10px;
+    
+}
+
+ :hover.navbar-item {
+    background-color: red;
+}
+
+.navBar{
+    display:flex;
+    flex-direction:row;
+}
