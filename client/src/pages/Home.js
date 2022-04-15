@@ -9,7 +9,7 @@ function Home(){
         <>
             <div>
                 <div class='header'>
-                <h1 class='welcome'>Welcome</h1>
+                <h1 class='welcome'>The Work Book Club</h1>
                     <Navbar />
                     
                 </div>
