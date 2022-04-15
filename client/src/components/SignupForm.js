@@ -1,35 +1,37 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import React from "react";
+import { useFormik } from "formik";
 
 const SignupForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
   const formik = useFormik({
     initialValues: {
-      email: '',
+      firstName: "",
+      lastName: "",
+      email: "",
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input 
+      <label htmlFor="firstName">First Name</label>
+      <input
         id="firstName"
         name="firstName"
         type="text"
         onChange={formik.handleChange}
         value={formik.values.firstName}
-        />
-        <label htmlFor="firstName">Last Name</label>
-        <input 
+      />
+      <label htmlFor="firstName">Last Name</label>
+      <input
         id="lastName"
         name="lastName"
         type="text"
         onChange={formik.handleChange}
         value={formik.values.lastName}
-        />
+      />
       <label htmlFor="email">Email Address</label>
       <input
         id="email"
