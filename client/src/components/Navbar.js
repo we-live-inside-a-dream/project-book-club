@@ -8,6 +8,7 @@ function Navbar() {
         <NavbarItem title={'Members'} address={'/members'}/>
         <NavbarItem title={'Schedule'} address={'/schedule'}/>
         <NavbarItem title={'Resources'} address={'/resources'}/>
+        <NavbarItem title={'SignupForm'} address={'/signupForm'}/>
       </div>
     </>
   );
