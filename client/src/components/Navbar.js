@@ -3,12 +3,14 @@ import './Navbar.css'
 function Navbar() {
   return (
     <>
+        <div class='signupButton'>
+        <NavbarItem title={'SignupForm'} address={'/signupForm'}/>
+        </div>
       <div class='navBar'>
         <NavbarItem title={'Home'} address={'/'}/>
         <NavbarItem title={'Members'} address={'/members'}/>
         <NavbarItem title={'Schedule'} address={'/schedule'}/>
         <NavbarItem title={'Resources'} address={'/resources'}/>
-        <NavbarItem title={'SignupForm'} address={'/signupForm'}/>
       </div>
     </>
   );
