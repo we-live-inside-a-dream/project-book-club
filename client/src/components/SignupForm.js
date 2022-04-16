@@ -9,6 +9,7 @@ const SignupForm = () => {
       firstName: "",
       lastName: "",
       email: "",
+      password: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -40,6 +41,16 @@ const SignupForm = () => {
         onChange={formik.handleChange}
         value={formik.values.email}
       />
+      
+      <label htmlFor="email">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+      />
+      
 
       <button type="submit">Submit</button>
     </form>
