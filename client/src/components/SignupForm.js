@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import './signupForm.css'
 
 const initialValues = {
   firstName: "",
@@ -8,9 +9,17 @@ const initialValues = {
   password: "",
 };
 
-const onSubmit = (values) => {
-  //alert(JSON.stringify(values, null, 2));
-  console.log("Form data", values);
+export const baseUrl = "http://localhost:5001"
+ const onSubmit = async (values) => {
+     await fetch(`${baseUrl}/api/members/create`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin': baseUrl
+        },
+        body: JSON.stringify(values)
+      });
 };
 
 const validate = (values) => {
@@ -45,6 +54,7 @@ const SignupForm = () => {
   });
   console.log('form errors',formik.errors)
   return (
+      <div class='background'>
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="firstName">First Name</label>
       <input
@@ -88,6 +98,7 @@ const SignupForm = () => {
 
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 
