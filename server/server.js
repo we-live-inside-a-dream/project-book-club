@@ -1,4 +1,5 @@
 const express = require('express')
+var cors = require('cors');
 
 const eventRoutes = require('./routes/eventRoutes')
 const membersRoutes = require('./routes/membersRoutes')
@@ -9,6 +10,8 @@ const port = 5001
 
 app.use(express.json())
 
+
+app.use(cors());
 app.use('/api/events', eventRoutes)
 app.use('/api/members', membersRoutes)
 

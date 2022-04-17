@@ -7,9 +7,14 @@ const Members = mongoose.model('Members', {
     },
     lastName: {
         type: String
+    },
+    email: {
+        type: String
+    },
+    password: {
+        type: String
     }
-    // "firstName": String,
-    // "lastName": String
+    
 })
 
 
