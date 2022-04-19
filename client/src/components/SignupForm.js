@@ -10,16 +10,16 @@ const initialValues = {
 };
 
 export const baseUrl = "http://localhost:5001"
- const onSubmit = async (values) => {
-     await fetch(`${baseUrl}/api/members/create`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Origin': baseUrl
-        },
-        body: JSON.stringify(values)
-      });
+const onSubmit = async (values) => {
+  await fetch(`${baseUrl}/api/members/create`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Origin': baseUrl
+    },
+    body: JSON.stringify(values)
+  });
 };
 
 const validate = (values) => {
@@ -52,52 +52,60 @@ const SignupForm = () => {
     onSubmit,
     validate,
   });
-  console.log('form errors',formik.errors)
+  console.log('form errors', formik.errors)
   return (
-      <div class='background'>
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
-        name="firstName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.firstName}
-      />
-      {formik.errors.firstName ? <div>{formik.errors.firstName}</div>: null}
+    <div class='background'>
+      <div class='secondBackground'>
+        <form class='form' onSubmit={formik.handleSubmit}>
+          <div class='container'>
+            <label class='label' htmlFor="firstName">First Name</label>
+            <input class='input'
+              id="firstName"
+              name="firstName"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+            /></div>
+          {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+          <div class='container'>
+            <label class='label' htmlFor="firstName">Last Name</label>
+            <input class='input'
+              id="lastName"
+              name="lastName"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.lastName}
+            />
+            {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+          </div>
 
-      <label htmlFor="firstName">Last Name</label>
-      <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.lastName}
-      />
-      {formik.errors.lastName ? <div>{formik.errors.lastName}</div>: null}
+          <div class='container'>
+            <label class='label' htmlFor="email">Email Address</label>
+            <input class='input'
+              id="email"
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+          </div>
 
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      {formik.errors.email ? <div>{formik.errors.email}</div>: null}
+          <div class='container'>
+            <label class='label' htmlFor="email">Password</label>
+            <input class='input'
+              id="password"
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
+            {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+          </div>
 
-      <label htmlFor="email">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
-      {formik.errors.password ? <div>{formik.errors.password}</div>: null}
-
-      <button type="submit">Submit</button>
-    </form>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
