@@ -12,7 +12,7 @@ import SignupForm from './components/SignupForm';
 
 function App() {
   return (
-    <div>
+
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/resources" element={<Resources />}/>
@@ -21,8 +21,7 @@ function App() {
         <Route path="/signupForm" element={<SignupForm />}/>
 
       </Routes>
-      
-    </div>
+
   );
 }
 
