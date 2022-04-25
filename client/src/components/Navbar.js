@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <>
         <div class='signupButton'>
-        <NavbarItem title={'SignupForm'} address={'/signupForm'}/>
+        <NavbarItem title={'Sign In / Register'} address={'/signIn'}/>
         </div>
       <div class='navBar'>
         <NavbarItem title={'Home'} address={'/'}/>
