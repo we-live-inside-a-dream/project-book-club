@@ -22,3 +22,5 @@ const Members = mongoose.model('Members', {
     }
     
 })
+
+export default Members;
