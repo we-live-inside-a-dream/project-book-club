@@ -1,3 +1,4 @@
+
 import { useFormik } from "formik";
 import './signupForm.css'
 
@@ -8,7 +9,7 @@ const initialValues = {
 
 export const baseUrl = "http://localhost:5001"
 const onSubmit = async (values) => {
-  await fetch(`${baseUrl}/api/members/create`, {
+  await fetch(`${baseUrl}/login`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
