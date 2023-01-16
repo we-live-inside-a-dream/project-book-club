@@ -13,6 +13,12 @@ const Members = mongoose.model('Members', {
     },
     password: {
         type: String
+    },
+    subscriptionDate: {
+        type: Date,
+    },
+    userName: {
+        type: String
     }
     
 })
