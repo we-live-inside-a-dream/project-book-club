@@ -1,4 +1,5 @@
-const Members = require('../models/members')
+
+const Members = require('../../models/members')
 
 async function createMember(membersData) {
     let newMember = new Members(membersData)
@@ -24,9 +25,14 @@ async function updateMember(id, updatedMember) {
     // return Members.findByIdAndUpdate(id, newMember)
 }
 
+async function deleteMember(id) {
+    return Members.findByIdAndDelete(id)
+}
+
 module.exports = {
     createMember,
     listMembers,
     findById,
-    updateMember
+    updateMember,
+    deleteMember
 }
