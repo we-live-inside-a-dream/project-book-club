@@ -3,7 +3,7 @@
 const passport = require("passport");
 const express = require("express");
 const router = express.Router();
-const membersListModel = require("./repository");
+const memberRepo = require("./repository");
 const Member = require("../../models/member");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -11,7 +11,7 @@ const LocalStrategy = require("passport-local").Strategy;
 passport.use(
   new LocalStrategy(function (username, password, done) {
     console.log("passport is trying to verify a member",username )
-    membersListModel.findUserByUsername(username)
+    memberRepo.findUserByUsername(username)
       .then((member) => {
         if (!member || member.password !== password) {
           done(null, false, { message: "Incorrect username or password." });
@@ -57,6 +57,7 @@ router.post("/create", async (req, res) => {
   res.send(createdId);
   console.log("from API this is a new member", createdId);
 });
+
 
 router.get("/list", async (req, res) => {
   let membersList = await membersListModel.listMember();
