@@ -1,6 +1,5 @@
-
 import { useFormik } from "formik";
-import './signupForm.css'
+import "./signupForm.css";
 
 const initialValues = {
   firstName: "",
@@ -9,16 +8,16 @@ const initialValues = {
   password: "",
 };
 
-export const baseUrl = "http://localhost:5001"
+export const baseUrl = "http://localhost:5001";
 const onSubmit = async (values) => {
-  await fetch(`${baseUrl}/api/members/create`, {
-    method: 'POST',
+  await fetch(`${baseUrl}/api/member/create`, {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Origin': baseUrl
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: baseUrl,
     },
-    body: JSON.stringify(values)
+    body: JSON.stringify(values),
   });
 };
 
@@ -52,36 +51,50 @@ const SignupForm = () => {
     onSubmit,
     validate,
   });
-  console.log('form errors', formik.errors)
+  console.log("form errors", formik.errors);
   return (
-    <div class='background'>
-      <div class='secondBackground'>
-        <form class='form' onSubmit={formik.handleSubmit}>
-          <div class='container'>
-            <label class='label' htmlFor="firstName">First Name</label>
-            <input class='input'
+    <div class="background">
+      <div class="secondBackground">
+        <form class="form" onSubmit={formik.handleSubmit}>
+          <div class="container">
+            <label class="label" htmlFor="firstName">
+              First Name
+            </label>
+            <input
+              class="input"
               id="firstName"
               name="firstName"
               type="text"
               onChange={formik.handleChange}
               value={formik.values.firstName}
-            /></div>
-          {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-          <div class='container'>
-            <label class='label' htmlFor="firstName">Last Name</label>
-            <input class='input'
+            />
+          </div>
+          {formik.errors.firstName ? (
+            <div>{formik.errors.firstName}</div>
+          ) : null}
+          <div class="container">
+            <label class="label" htmlFor="firstName">
+              Last Name
+            </label>
+            <input
+              class="input"
               id="lastName"
               name="lastName"
               type="text"
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
-            {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+            {formik.errors.lastName ? (
+              <div>{formik.errors.lastName}</div>
+            ) : null}
           </div>
 
-          <div class='container'>
-            <label class='label' htmlFor="email">Email Address</label>
-            <input class='input'
+          <div class="container">
+            <label class="label" htmlFor="email">
+              Email Address
+            </label>
+            <input
+              class="input"
               id="email"
               name="email"
               type="email"
@@ -91,16 +104,21 @@ const SignupForm = () => {
             {formik.errors.email ? <div>{formik.errors.email}</div> : null}
           </div>
 
-          <div class='container'>
-            <label class='label' htmlFor="email">Password</label>
-            <input class='input'
+          <div class="container">
+            <label class="label" htmlFor="email">
+              Password
+            </label>
+            <input
+              class="input"
               id="password"
               name="password"
               type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+            {formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
           </div>
 
           <button type="submit">Submit</button>
