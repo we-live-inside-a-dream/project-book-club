@@ -9,8 +9,12 @@ async function createMember(membersData) {
     return createdMember.id;
 }
 
-async function listMembers() {
+async function listMember() {
     return Members.find({})
+}
+
+async function findUserByUsername(userName) {
+    return Members.findOne({userName})
 }
 
 async function findById(id) {
@@ -31,8 +35,9 @@ async function deleteMember(id) {
 
 module.exports = {
     createMember,
-    listMembers,
+    listMember,
     findById,
     updateMember,
-    deleteMember
+    deleteMember,
+    findUserByUsername
 }
