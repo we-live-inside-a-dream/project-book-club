@@ -4,6 +4,7 @@ import "./signupForm.css";
 const initialValues = {
   firstName: "",
   lastName: "",
+  userName: "",
   email: "",
   password: "",
 };
@@ -33,6 +34,13 @@ const validate = (values) => {
     errors.email = "Required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "Invalid email address";
+  }
+  if (!values.userName) {
+    errors.userName = "Required";
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.userName)
+  ) {
+    errors.userName = "Invalid user name";
   }
   if (!values.password) {
     errors.password = "Required";
@@ -86,6 +94,23 @@ const SignupForm = () => {
             />
             {formik.errors.lastName ? (
               <div>{formik.errors.lastName}</div>
+            ) : null}
+          </div>
+
+          <div class="container">
+            <label class="label" htmlFor="userName">
+              Username
+            </label>
+            <input
+              class="input"
+              id="userName"
+              name="userName"
+              type="userName"
+              onChange={formik.handleChange}
+              value={formik.values.userName}
+            />
+            {formik.errors.userName ? (
+              <div>{formik.errors.userName}</div>
             ) : null}
           </div>
 
