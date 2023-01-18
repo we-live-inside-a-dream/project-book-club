@@ -8,7 +8,7 @@ const initialValues = {
 
 export const baseUrl = "http://localhost:5001";
 const onSubmit = async (values) => {
-  await fetch(`${baseUrl}/api/auth/login`, {
+  await fetch(`${baseUrl}/api/member/login`, {
     method: "POST",
     headers: {
       Accept: "application/json",
