@@ -11,7 +11,7 @@ const LocalStrategy = require("passport-local").Strategy;
 passport.use(
   new LocalStrategy(function (username, password, done) {
     console.log("passport is trying to verify a member",username )
-    Member.findMemberByUsername(username)
+    membersListModel.findUserByUsername(username)
       .then((member) => {
         if (!member || member.password !== password) {
           done(null, false, { message: "Incorrect username or password." });
@@ -42,7 +42,7 @@ passport.deserializeUser(function(id, done) {
 // Post Route: /login
 router.post("/login", passport.authenticate("local"), function (req, res) {
   console.log("member logged in susscess")
-  console.log("from API login route", req.member);
+  console.log("from API login route", req.user);
   res.sendStatus(200);
 });
 
