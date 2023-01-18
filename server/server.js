@@ -13,26 +13,21 @@ const port = 5001;
 
 app.use(express.json());
 
+app.use(
+  session({
+    secret: "secretcode"
+  })
+  );
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Middleware
 app.use(cors());
 app.use("/api/events", eventRoutes);
 app.use("/api/member/", authRoutes);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(
-  session({
-    secret: "secretcode",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
-
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
