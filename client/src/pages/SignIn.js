@@ -8,18 +8,7 @@ const initialValues = {
   password: "",
 };
 
-export const baseUrl = "http://localhost:5001";
-const onSubmit = async (values) => {
-  await fetch(`${baseUrl}/api/member/login`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Origin: baseUrl,
-    },
-    body: JSON.stringify(values),
-  });
-};
+
 
 const validate = (values) => {
   const errors = {};
@@ -35,6 +24,20 @@ const SignIn = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
   const navigate = useNavigate();
+
+const baseUrl = "http://localhost:5001";
+const onSubmit = async (values) => {
+  await fetch(`${baseUrl}/api/member/login`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: baseUrl,
+    },
+    body: JSON.stringify(values),
+  });
+  navigate("/");
+};
 
   const formik = useFormik({
     initialValues,
