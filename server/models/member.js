@@ -1,7 +1,7 @@
 
 const mongoose = require('./mongooseDb');
 
-const Members = mongoose.model('Members', {
+const Member = mongoose.model('Members', {
     firstName: {
         type: String,
     },
@@ -23,4 +23,4 @@ const Members = mongoose.model('Members', {
     
 })
 
-export default Members;
+module.exports = Member;
