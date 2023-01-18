@@ -1,5 +1,5 @@
 
-const Members = require('../../models/members')
+const Members = require('../../models/member')
 
 async function createMember(membersData) {
     let newMember = new Members(membersData)
