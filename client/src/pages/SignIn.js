@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import "./signupForm.css";
 
+
 const initialValues = {
-  email: "",
+  username: "",
   password: "",
 };
 
@@ -21,10 +23,10 @@ const onSubmit = async (values) => {
 
 const validate = (values) => {
   const errors = {};
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+  if (!values.username) {
+    errors.username = "Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)) {
+    errors.username = "Invalid username address";
   }
   return errors;
 };
@@ -32,6 +34,8 @@ const validate = (values) => {
 const SignIn = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -43,22 +47,22 @@ const SignIn = () => {
       <div class="secondBackground">
         <form class="form" onSubmit={formik.handleSubmit}>
           <div class="container">
-            <label class="label" htmlFor="email">
-              Email Address
+            <label class="label" htmlFor="username">
+              username Address
             </label>
             <input
               class="input"
-              id="email"
-              name="email"
-              type="email"
+              id="username"
+              name="username"
+              type="username"
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={formik.values.username}
             />
-            {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+            {formik.errors.username ? <div>{formik.errors.username}</div> : null}
           </div>
 
           <div class="container">
-            <label class="label" htmlFor="email">
+            <label class="label" htmlFor="username">
               Password
             </label>
             <input
