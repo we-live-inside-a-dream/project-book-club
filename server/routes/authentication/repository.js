@@ -1,43 +1,47 @@
-
-const Members = require('../../models/member')
+const Members = require("../../models/member");
 
 async function createMember(membersData) {
-    let newMember = new Members(membersData)
-    console.log("this is a new member", newMember)
-    let createdMember = await newMember.save()
-    console.log("saving members info", createdMember)
-    return createdMember.id;
+  let newMember = new Members(membersData);
+  console.log("this is a new member", newMember);
+  let createdMember = await newMember.save();
+  console.log("saving members info", createdMember);
+  return createdMember.id;
 }
 
 async function listMember() {
-    return Members.find({})
+  return Members.find({});
 }
 
 async function findUserByUsername(userName) {
-    return Members.findOne({userName})
+  return Members.findOne({ userName });
 }
 
 async function findById(id) {
-    return Members.findById(id)
+  let fullMemberRecord = await Members.findById(id);
+  let memberToReturn = {
+    id: fullMemberRecord.id,
+    username: fullMemberRecord.userName,
+  };
+  return memberToReturn;
 }
 
 async function updateMember(id, updatedMember) {
-    console.log("From the model/update", id, updatedMember)
-    await Members.findByIdAndUpdate(id, updatedMember, {
-        returnDocument: "after"
-    })
-    // return Members.findByIdAndUpdate(id, newMember)
+  console.log("From the model/update", id, updatedMember);
+  await Members.findByIdAndUpdate(id, updatedMember, {
+    returnDocument: "after",
+  });
+  // return Members.findByIdAndUpdate(id, newMember)
 }
 
 async function deleteMember(id) {
-    return Members.findByIdAndDelete(id)
+  return Members.findByIdAndDelete(id);
 }
 
 module.exports = {
-    createMember,
-    listMember,
-    findById,
-    updateMember,
-    deleteMember,
-    findUserByUsername
-}
+  createMember,
+  listMember,
+  findById,
+  updateMember,
+  deleteMember,
+  findUserByUsername,
+};
