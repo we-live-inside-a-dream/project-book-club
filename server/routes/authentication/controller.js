@@ -1,6 +1,5 @@
 
 const passport = require("passport");
-const express = require("express");
 const memberRepo = require("./repository");
 const LocalStrategy = require("passport-local").Strategy;
 

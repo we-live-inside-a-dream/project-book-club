@@ -4,7 +4,7 @@ const eventModel = require("../models/events");
 const { update } = require("../models/member");
 // const studentsList = require('../models/membersList.json')
 
-router.post("/createEvent", async (req, res) => {
+router.post("/createEvent", mustBeLoggedIn, async (req, res) => {
   let newEvent = req.body;
   console.log("this is the body ", newEvent);
   let createdEventId = await eventModel.createEvent(newEvent);
@@ -18,7 +18,7 @@ router.get("/events", async (req, res) => {
   res.send(events);
 });
 
-router.post("/updateEvent/:id", async (req, res) => {
+router.post("/updateEvent/:id", mustBeLoggedIn, async (req, res) => {
   let id = req.params.id;
   let updatedEvent = req.body;
   console.log("this is updatedEvent from routes", updatedEvent);
@@ -27,7 +27,7 @@ router.post("/updateEvent/:id", async (req, res) => {
   res.json(newUpdatedEvent);
 });
 
-router.delete("/deleteEvent/:id", async (req, res) => {
+router.delete("/deleteEvent/:id", mustBeLoggedIn, async (req, res) => {
   let id = req.params.id;
   let deletedEvent = await eventModel.deleteEvent(id);
   console.log("this is the deleteEvent from router", deletedEvent);
