@@ -1,47 +1,47 @@
-const Members = require("../../models/member");
+const Users = require("../../models/user");
 
-async function createMember(membersData) {
-  let newMember = new Members(membersData);
-  console.log("this is a new member", newMember);
-  let createdMember = await newMember.save();
-  console.log("saving members info", createdMember);
-  return createdMember.id;
+async function createUser(usersData) {
+  let newUser = new Users(usersData);
+  console.log("this is a new user", newUser);
+  let createdUser = await newUser.save();
+  console.log("saving users info", createdUser);
+  return createdUser.id;
 }
 
-async function listMember() {
-  return Members.find({});
+async function listUser() {
+  return Users.find({});
 }
 
 async function findUserByUsername(userName) {
-  return Members.findOne({ userName });
+  return Users.findOne({ userName });
 }
 
 async function findById(id) {
-  let fullMemberRecord = await Members.findById(id);
-  let memberToReturn = {
-    id: fullMemberRecord.id,
-    username: fullMemberRecord.userName,
+  let fullUserRecord = await Users.findById(id);
+  let userToReturn = {
+    id: fullUserRecord.id,
+    username: fullUserRecord.userName,
   };
-  return memberToReturn;
+  return userToReturn;
 }
 
-async function updateMember(id, updatedMember) {
-  console.log("From the model/update", id, updatedMember);
-  await Members.findByIdAndUpdate(id, updatedMember, {
+async function updateUser(id, updatedUser) {
+  console.log("From the model/update", id, updatedUser);
+  await Users.findByIdAndUpdate(id, updatedUser, {
     returnDocument: "after",
   });
-  // return Members.findByIdAndUpdate(id, newMember)
+  // return Users.findByIdAndUpdate(id, newUser)
 }
 
-async function deleteMember(id) {
-  return Members.findByIdAndDelete(id);
+async function deleteUser(id) {
+  return Users.findByIdAndDelete(id);
 }
 
 module.exports = {
-  createMember,
-  listMember,
+  createUser,
+  listUser,
   findById,
-  updateMember,
-  deleteMember,
+  updateUser,
+  deleteUser,
   findUserByUsername,
 };

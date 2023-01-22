@@ -1,7 +1,7 @@
 
 const mongoose = require('./mongooseDb');
 
-const Member = mongoose.model('Members', {
+const User = mongoose.model('User', {
     firstName: {
         type: String,
     },
@@ -23,4 +23,4 @@ const Member = mongoose.model('Members', {
     
 })
 
-module.exports = Member;
+module.exports = User;
