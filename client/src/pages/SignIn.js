@@ -1,20 +1,22 @@
 import { useFormik } from "formik";
+import { useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthenticationContext from "../AuthenticationContext";
 import "./signupForm.css";
-
 
 const initialValues = {
   username: "",
   password: "",
 };
 
-
-
 const validate = (values) => {
   const errors = {};
   if (!values.username) {
     errors.username = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)) {
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)
+  ) {
     errors.username = "Invalid username address";
   }
   return errors;
@@ -23,21 +25,20 @@ const validate = (values) => {
 const SignIn = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
+
+  const authContext = useContext(AuthenticationContext);
+  const [signError, setSignError] = useState(false);
   const navigate = useNavigate();
 
-const baseUrl = "http://localhost:5001";
-const onSubmit = async (values) => {
-  await fetch(`${baseUrl}/api/member/login`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Origin: baseUrl,
-    },
-    body: JSON.stringify(values),
-  });
-  navigate("/");
-};
+  const onSubmit = async (values) => {
+    const isLoggedIn = await authContext.logIn(values);
+    console.log("this is the signin page", isLoggedIn);
+    if (isLoggedIn) {
+      navigate("/");
+    } else {
+      setSignError("Invalid username or password");
+    }
+  };
 
   const formik = useFormik({
     initialValues,
@@ -61,7 +62,9 @@ const onSubmit = async (values) => {
               onChange={formik.handleChange}
               value={formik.values.username}
             />
-            {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+            {formik.errors.username ? (
+              <div>{formik.errors.username}</div>
+            ) : null}
           </div>
 
           <div class="container">
@@ -82,6 +85,7 @@ const onSubmit = async (values) => {
           </div>
 
           <button type="submit">Sign In</button>
+          {signError}
         </form>
         <p>
           Don't have an account yet?
