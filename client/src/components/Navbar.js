@@ -2,7 +2,6 @@ import "./Navbar.css";
 import { useContext } from "react";
 import AuthenticationContext from "../AuthenticationContext";
 import MustBeLoggedIn from "./MustBeLoggedIn";
-import { Link } from "react-router-dom";
 
 function Navbar() {
   const authContext = useContext(AuthenticationContext);
