@@ -5,7 +5,7 @@ const session = require("express-session"); // session middleware
 const passport = require("passport"); // authentication
 const connectEnsureLogin = require("connect-ensure-login"); //authorization
 
-const eventRoutes = require("./routes/eventRoutes");
+const eventRoutes = require("./routes/events/routes");
 const authRoutes = require("./routes/authentication/routes");
 
 const app = express();
