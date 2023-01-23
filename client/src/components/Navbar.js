@@ -1,19 +1,29 @@
 import "./Navbar.css";
-import { useState } from "react";
 import { useContext } from "react";
 import AuthenticationContext from "../AuthenticationContext";
+import MustBeLoggedIn from "./MustBeLoggedIn";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const authContext = useContext(AuthenticationContext);
   return (
     <>
       <div class="signupButton">
-        <NavbarItem title={"Sign In / Register"} address={"/signIn"} />
+        {!authContext.user && (
+          <NavbarItem title={"Sign In / Register"} address={"/signIn"} />
+        )}
+        <MustBeLoggedIn>
+          <button className="navbar-item" onClick={authContext.logOut}>
+            logOut
+          </button>
+        </MustBeLoggedIn>
       </div>
       <div class="navBar">
-        {authContext.user && <p>{authContext.user.firstName}</p>}
+        {authContext.user && <p>Hello {authContext.user.firstName}</p>}
         <NavbarItem title={"Home"} address={"/"} />
-        <NavbarItem title={"Members"} address={"/members"} />
+        <MustBeLoggedIn>
+          <NavbarItem title={"Members"} address={"/members"} />
+        </MustBeLoggedIn>
         <NavbarItem title={"Schedule"} address={"/schedule"} />
         <NavbarItem title={"Resources"} address={"/resources"} />
       </div>
