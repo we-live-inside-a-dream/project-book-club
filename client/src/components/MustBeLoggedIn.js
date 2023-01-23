@@ -1,8 +1,9 @@
-import React, { Children } from 'react'
+import { useContext } from "react";
+import AuthenticationContext from "../AuthenticationContext";
 
-function MustBeLoggedIn() {
-    const authContext = useContext(AuthenticationContext)
-  return authContext.username ? Children : null
+function MustBeLoggedIn({ children }) {
+  const authContext = useContext(AuthenticationContext);
+  return authContext.user ? children : null;
 }
 
-export default MustBeLoggedIn
+export default MustBeLoggedIn;
