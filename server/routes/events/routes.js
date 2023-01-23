@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const eventModel = require("../models/events");
-const { update } = require("../models/member");
+const eventModel = require("../../models/events");
+const { update } = require("../../models/user");
+const mustBeLoggedIn = require("./controller");
 // const studentsList = require('../models/membersList.json')
 
 router.post("/createEvent", mustBeLoggedIn, async (req, res) => {
