@@ -6,21 +6,20 @@ const router = express.Router();
 const userRepo = require("./repository");
 const controllers = require("./controller");
 const User = require("../../models/user");
-const LocalStrategy = require("passport-local").Strategy;
 
 // Post Route: /login
 router.post("/login", passport.authenticate("local"), function (req, res) {
   console.log("user logged in susscess");
   console.log("from API login route", req.user);
-  res.sendStatus(200);
+  res.send(req.user);
 });
 
-router.get("/loggedInUser", function (req, res) {
+router.get("/loggedInUser", (req, res) => {
   res.send(req.user);
 });
 
 // Route to Logout
-router.get("/logout", function (req, res) {
+router.get("/logout", (req, res) => {
   req.logout();
 });
 
