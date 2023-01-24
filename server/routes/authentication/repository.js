@@ -18,11 +18,7 @@ async function findUserByUsername(userName) {
 
 async function findById(id) {
   let fullUserRecord = await Users.findById(id);
-  let userToReturn = {
-    id: fullUserRecord.id,
-    username: fullUserRecord.userName,
-  };
-  return userToReturn;
+  return fullUserRecord;
 }
 
 async function updateUser(id, updatedUser) {
