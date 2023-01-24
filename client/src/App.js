@@ -8,6 +8,8 @@ import SignupForm from "./pages/SignupForm";
 import Navbar from "./components/Navbar";
 import SignIn from "./pages/SignIn";
 import AuthenticationProvider from "./AuthenticationProvider";
+import MustBeLoggedIn from "./components/MustBeLoggedIn";
+import PrivatePage from "./components/PrivatePage";
 
 function App() {
   return (
@@ -20,9 +22,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resources" element={<Resources />} />
-          <Route path="/members" element={<Members />} />
+          <Route
+            path="/members"
+            element={
+              <PrivatePage>
+                <Members />
+              </PrivatePage>
+            }
+          />
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/signupForm" element={<SignupForm />} />
+          <Route path="/signupForm" element={<SignupForm />} />{" "}
           <Route path="/signIn" element={<SignIn />} />
         </Routes>
       </div>
