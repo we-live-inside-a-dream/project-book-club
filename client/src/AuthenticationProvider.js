@@ -47,7 +47,7 @@ const AuthenticationProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    fetch(`/api/member/login`);
+    fetch(`/api/member/logout`);
     setUser(null);
   };
 

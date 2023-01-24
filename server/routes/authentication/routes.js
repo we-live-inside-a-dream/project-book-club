@@ -20,7 +20,9 @@ router.get("/loggedInUser", (req, res) => {
 
 // Route to Logout
 router.get("/logout", (req, res) => {
-  req.logout();
+  req.logout(req.user, (err) => {
+    if (err) return next(err);
+  });
 });
 
 router.post("/create", async (req, res) => {
