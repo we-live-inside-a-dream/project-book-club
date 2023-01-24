@@ -5,9 +5,28 @@ import AuthenticationContext from "./AuthenticationContext";
 const AuthenticationProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  //   useEffect(() => {
+  // useEffect(() => {
+  //   const getLoggedInUser = async () => {
+  //     const response = await fetch(`/api/member/loggedInUser`);
+  //     const loggedInUser = await response.json();
+  //     if (loggedInUser) {
+  //       logIn(loggedInUser.user);
+  //     }
+  //   };
+  //   getLoggedInUser();
+  // }, []);
 
-  //   }, []);
+  useEffect(() => {
+    if (!user) {
+      fetch(`/api/member/loggedInUser`)
+        .then((response) => response.json())
+        .then((userData) => {
+          if (userData) {
+            setUser(userData);
+          }
+        });
+    }
+  }, []);
 
   const logIn = async (values) => {
     const response = await fetch(`/api/member/login`, {
@@ -18,8 +37,8 @@ const AuthenticationProvider = ({ children }) => {
       body: JSON.stringify(values),
     });
     if (response.ok) {
-        const userData = await response.json();
-        console.log('user data', userData);
+      const userData = await response.json();
+      console.log("user data", userData);
       setUser(userData);
       return true;
     } else {
