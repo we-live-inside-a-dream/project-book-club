@@ -45,7 +45,7 @@ const SignIn = () => {
     onSubmit,
     validate,
   });
-  console.log("form errors", formik.errors);
+
   return (
     <div class="background">
       <div class="secondBackground">
