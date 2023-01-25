@@ -6,10 +6,11 @@ function PrivatePage({ children }) {
   const authContext = useContext(AuthenticationContext);
   console.log("user is logged in", authContext.user);
 
-  if (authContext.user) {
-    return <>{children}</>;
-  }
-  return <Navigate to={"/signIn"} />;
+  return authContext.user ? children : <Navigate to={"/signIn"} />;
+  // if (authContext.user) {
+  //   return <>{children}</>;
+  // }
+  // return <Navigate to={"/signIn"} />;
 }
 
 export default PrivatePage;
