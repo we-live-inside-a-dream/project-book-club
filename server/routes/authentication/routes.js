@@ -10,32 +10,11 @@ const bcrypt = require("bcrypt");
 
 const saltRounds = 10;
 // Post Route: /login
-router.post(
-  "/login",
-  passport.authenticate("local"),
-  async function (req, res) {
-    try {
-      const user = await userRepo.findUserByUsername(req.body.username);
-      console.log("This is the user", user);
-      if (user) {
-        const cmp = await bcrypt.compare(req.body.password, user.password);
-        if (cmp) {
-          res.send(user);
-        } else {
-          res.status(401).send("Invalid username or password");
-        }
-      } else {
-        res.status(401).send("Invalid username or password");
-      }
-    } catch (err) {
-      console.log(err);
-      res.status(500).send("Internal Server Error");
-    }
-    // console.log("user logged in susscess");
-    // console.log("from API login route", req.user);
-    // res.send(req.user);
-  }
-);
+router.post("/login", passport.authenticate("local"), async (req, res) => {
+  console.log("this is the user logging in from routes", req.user);
+  res.send(req.user);
+ 
+});
 
 router.get("/loggedInUser", (req, res) => {
   res.send(req.user);
@@ -49,22 +28,12 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  try {
-    const hashedPwd = await bcrypt.hash(req.body.password, saltRounds);
-    const insertResult = await userRepo.createUser({
-      username: req.body.username,
-      password: hashedPwd,
-    });
-    res.send(insertResult);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
+  console.log("This is the body from create endpoint", req.body);
+  let newUser = req.body;
+  let createdId = await userRepo.createUser(newUser);
+  console.log("from API this is a new user created", createdId);
+  res.send(createdId);
 });
-// let newUser = req.body;
-// let createdId = await userRepo.createUser(newUser);
-// res.send(createdId);
-// console.log("from API this is a new user", createdId);
 
 router.get("/list", async (req, res) => {
   let userRepo = await userRepo.listUser();
