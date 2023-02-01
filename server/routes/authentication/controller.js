@@ -4,17 +4,20 @@ const LocalStrategy = require("passport-local").Strategy;
 
 // Passport Local Strategy
 passport.use(
-  new LocalStrategy(function (username, password, done) {
-    console.log("passport is trying to verify a user", username);
-    userRepo
-      .findUserByUsername(username)
-      .then((user) => {
-        if (!user || user.password !== password) {
-          done(null, false, { message: "Incorrect username or password." });
-        }
-        done(null, user);
-      })
-      .catch(done);
+  new LocalStrategy(async function (username, password, done) {
+    try {
+    const user = await userRepo.findUserByUsername(username);
+    if(!user) {
+      return done(null, false);
+    }
+    const passwordsMatch = await userRepo.verifyPassword(password, user.password)
+    if(!passwordsMatch){
+      return done(null, false)
+    }
+    return done(null, user)
+  } catch(error) {
+    return done(error, null) 
+  }
   })
 );
 
