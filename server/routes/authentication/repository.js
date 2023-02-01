@@ -1,11 +1,18 @@
 const Users = require("../../models/user");
+const bcrypt = require("bcrypt");
 
-async function createUser(usersData) {
-  let newUser = new Users(usersData);
-  console.log("this is a new user", newUser);
-  let createdUser = await newUser.save();
-  console.log("saving users info", createdUser);
-  return createdUser.id;
+const saltRounds = 10;
+
+async function createUser(usersData, res) {
+    const hashedPassword = bcrypt.hashSync(usersData.password, saltRounds);
+    const newUser = await Users.create({
+      firstName: usersData.firstName,
+      lastName: usersData.lastName,
+      userName: usersData.userName,
+      email: usersData.email,
+      password: hashedPassword,
+    });
+  return newUser;
 }
 
 async function listUser() {
@@ -13,7 +20,8 @@ async function listUser() {
 }
 
 async function findUserByUsername(userName) {
-  return Users.findOne({ userName });
+  const username = await Users.findOne({ userName });
+  return username;
 }
 
 async function findById(id) {
@@ -33,6 +41,11 @@ async function deleteUser(id) {
   return Users.findByIdAndDelete(id);
 }
 
+async function verifyPassword(password, hashedPassword) {
+  const passwordsMatch = bcrypt.compare(password, hashedPassword);
+  return passwordsMatch;
+}
+
 module.exports = {
   createUser,
   listUser,
@@ -40,4 +53,5 @@ module.exports = {
   updateUser,
   deleteUser,
   findUserByUsername,
+  verifyPassword,
 };
