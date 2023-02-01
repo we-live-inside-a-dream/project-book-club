@@ -11,15 +11,17 @@ const authRoutes = require("./routes/authentication/routes");
 const app = express();
 const port = 5001;
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(
   session({
-    secret: "secretcode"
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
   })
-  );
+);
 app.use(passport.initialize());
-app.use(passport.session());
 
 // Middleware
 app.use(cors());
