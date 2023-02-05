@@ -2,20 +2,26 @@ import "./Navbar.css";
 import MustBeLoggedIn from "./MustBeLoggedIn";
 import { useSelector } from "react-redux";
 import { logOut } from "../api/user";
+import { selectUser } from "../redux/slice/userSlice";
 
 function Navbar() {
-  const userData = useSelector((state) => state.user);
+  const userData = useSelector(selectUser);
+  console.log("userData", userData);
   return (
     <>
       <div class="signupButton">
-        {!userData && (
+        {!userData ? (
           <NavbarItem title={"Sign In / Register"} address={"/signIn"} />
-        )}
-        <MustBeLoggedIn>
+        ) : (
           <button className="navbar-item" onClick={logOut}>
             logOut
           </button>
-        </MustBeLoggedIn>
+        )}
+        {/* <MustBeLoggedIn>
+          <button className="navbar-item" onClick={logOut}>
+            logOut
+          </button>
+        </MustBeLoggedIn> */}
       </div>
       <div class="navBar">
         {userData && <p>Hello {userData.firstName}</p>}
