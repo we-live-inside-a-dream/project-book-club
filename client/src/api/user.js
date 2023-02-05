@@ -1,10 +1,11 @@
 export const logIn = async (user, pass) => {
+  console.log("logIn: ", user, pass);
   return fetch(`/api/member/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({userName: user, password: pass}),
+    body: JSON.stringify({ username: user, password: pass }),
   })
     .then((response) => {
       if (response.ok) {
