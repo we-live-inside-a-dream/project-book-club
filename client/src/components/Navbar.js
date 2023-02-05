@@ -1,5 +1,4 @@
 import "./Navbar.css";
-import { useContext } from "react";
 import MustBeLoggedIn from "./MustBeLoggedIn";
 import { useSelector } from "react-redux";
 import { logOut } from "../api/user";
