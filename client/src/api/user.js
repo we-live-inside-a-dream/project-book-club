@@ -1,5 +1,4 @@
 export const logIn = async (user, pass) => {
-  console.log("logIn: ", user, pass);
   return fetch(`/api/member/login`, {
     method: "POST",
     headers: {
