@@ -1,23 +1,24 @@
 import { useFormik } from "formik";
-import { useContext } from "react";
-import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthenticationContext from "../AuthenticationContext";
+import { useLogIn } from "../hooks/useLogIn";
 import "./signupForm.css";
+import { useDispatch } from "react-redux";
+import { SET_USER } from "../redux/slice/userSlice";
 
 const initialValues = {
-  username: "",
+  userName: "",
   password: "",
 };
 
 const validate = (values) => {
   const errors = {};
-  if (!values.username) {
-    errors.username = "Required";
+  if (!values.userName) {
+    errors.userName = "Required";
   } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.userName)
   ) {
-    errors.username = "Invalid username address";
+    errors.userName = "Invalid userName address";
   }
   return errors;
 };
@@ -26,19 +27,20 @@ const SignIn = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
 
-  const authContext = useContext(AuthenticationContext);
-  const [signError, setSignError] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { setCredentials, isLoading, userData, error } = useLogIn();
 
   const onSubmit = async (values) => {
-    const isLoggedIn = await authContext.logIn(values);
-    console.log("this is the signin page", isLoggedIn);
-    if (isLoggedIn) {
-      navigate("/");
-    } else {
-      setSignError("Invalid username or password");
-    }
+    setCredentials({ user: values.userName, pass: values.password });
   };
+
+  useEffect(() => {
+    if (userData) {
+      dispatch(SET_USER(userData));
+      navigate("/home");
+    }
+  }, [userData]);
 
   const formik = useFormik({
     initialValues,
@@ -51,24 +53,24 @@ const SignIn = () => {
       <div class="secondBackground">
         <form class="form" onSubmit={formik.handleSubmit}>
           <div class="container">
-            <label class="label" htmlFor="username">
-              username Address
+            <label class="label" htmlFor="userName">
+              userName Address
             </label>
             <input
               class="input"
-              id="username"
-              name="username"
-              type="username"
+              id="userName"
+              name="userName"
+              type="userName"
               onChange={formik.handleChange}
-              value={formik.values.username}
+              value={formik.values.userName}
             />
-            {formik.errors.username ? (
-              <div>{formik.errors.username}</div>
+            {formik.errors.userName ? (
+              <div>{formik.errors.userName}</div>
             ) : null}
           </div>
 
           <div class="container">
-            <label class="label" htmlFor="username">
+            <label class="label" htmlFor="userName">
               Password
             </label>
             <input
@@ -85,7 +87,7 @@ const SignIn = () => {
           </div>
 
           <button type="submit">Sign In</button>
-          {signError}
+          {error}
         </form>
         <p>
           Don't have an account yet?
