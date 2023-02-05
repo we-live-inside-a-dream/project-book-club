@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import AuthenticationContext from "../AuthenticationContext";
+import { useSelector } from "react-redux";
+
 
 function MustBeLoggedIn({ children }) {
-  const authContext = useContext(AuthenticationContext);
-  console.log("user is logged in", authContext.user);
+  const userData = useSelector((state) => state.user);
 
-  return authContext.user ? children : null;
+  return userData ? children : null;
 }
 
 export default MustBeLoggedIn;

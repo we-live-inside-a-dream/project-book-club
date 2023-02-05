@@ -1,24 +1,25 @@
 import "./Navbar.css";
 import { useContext } from "react";
-import AuthenticationContext from "../AuthenticationContext";
 import MustBeLoggedIn from "./MustBeLoggedIn";
+import { useSelector } from "react-redux";
+import { logOut } from "../api/user";
 
 function Navbar() {
-  const authContext = useContext(AuthenticationContext);
+  const userData = useSelector((state) => state.user);
   return (
     <>
       <div class="signupButton">
-        {!authContext.user && (
+        {!userData && (
           <NavbarItem title={"Sign In / Register"} address={"/signIn"} />
         )}
         <MustBeLoggedIn>
-          <button className="navbar-item" onClick={authContext.logOut}>
+          <button className="navbar-item" onClick={logOut}>
             logOut
           </button>
         </MustBeLoggedIn>
       </div>
       <div class="navBar">
-        {authContext.user && <p>Hello {authContext.user.firstName}</p>}
+        {userData && <p>Hello {userData.firstName}</p>}
         <NavbarItem title={"Home"} address={"/"} />
         <MustBeLoggedIn>
           <NavbarItem title={"Members"} address={"/members"} />

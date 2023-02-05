@@ -1,16 +1,11 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import AuthenticationContext from "../AuthenticationContext";
+import { useSelector } from "react-redux";
 
 function PrivatePage({ children }) {
-  const authContext = useContext(AuthenticationContext);
-  console.log("user is logged in", authContext.user);
+  const userData = useSelector((state) => state.user);
 
-  return authContext.user ? children : <Navigate to={"/signIn"} />;
-  // if (authContext.user) {
-  //   return <>{children}</>;
-  // }
-  // return <Navigate to={"/signIn"} />;
+  return userData ? children : <Navigate to={"/signIn"} />;
 }
 
 export default PrivatePage;
