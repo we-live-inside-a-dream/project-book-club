@@ -12,8 +12,14 @@ const saltRounds = 10;
 // Post Route: /login
 router.post("/login", passport.authenticate("local"), async (req, res) => {
   console.log("this is the user logging in from routes", req.user);
-  res.send(req.user);
- 
+  const user = {
+    id: req.user.id,
+    userName: req.user.username,
+    email: req.user.email,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+  };
+  res.send(user);
 });
 
 router.get("/loggedInUser", (req, res) => {
