@@ -7,13 +7,14 @@ import Members from "./pages/Members";
 import SignupForm from "./pages/SignupForm";
 import Navbar from "./components/Navbar";
 import SignIn from "./pages/SignIn";
-import AuthenticationProvider from "./AuthenticationProvider";
-import MustBeLoggedIn from "./components/MustBeLoggedIn";
+// import MustBeLoggedIn from "./components/MustBeLoggedIn";
 import PrivatePage from "./components/PrivatePage";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
-    <AuthenticationProvider>
+    <Provider store={store}>
       <div>
         <div class="header">
           <Navbar />
@@ -35,7 +36,7 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
         </Routes>
       </div>
-    </AuthenticationProvider>
+    </Provider>
   );
 }
 
